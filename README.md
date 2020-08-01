@@ -5,6 +5,4 @@
 
 效果
 
-
-
-![1596264018870](image/demonstrate.png)
+![demonstrate](https://github.com/louzhu123/embed/raw/master/image/demonstrate.png)
