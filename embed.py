@@ -1,5 +1,10 @@
 import webview
 import win32gui,win32api
+import configparser
+
+cf = configparser.ConfigParser()
+cf.read("./config.ini")
+url = cf.get("pywebview", "url")
 
 tmpHwnd = None
 
@@ -29,7 +34,7 @@ def on_shown():
     
 window = webview.create_window(
     title='123',
-    url='https://live.bilibili.com/21981310',
+    url = url,
     width=1920,
     height=1080,
     resizable=True,
