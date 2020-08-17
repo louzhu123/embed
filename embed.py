@@ -1,12 +1,8 @@
 import webview
 import win32gui,win32api
 import configparser
+import os
 
-cf = configparser.ConfigParser()
-cf.read("./config.ini")
-url = cf.get("pywebview", "url")
-
-tmpHwnd = None
 
 # 遍历所有窗口，关闭Pogman前面的WokerW窗口，否则会遮挡被嵌入的窗口
 def EnumWindowsProc(hwnd,lParam):
@@ -21,9 +17,10 @@ def EnumWindowsProc(hwnd,lParam):
 
 # 嵌入到桌面
 def embed():
+    global programName
     desk = win32gui.FindWindow("Progman","Program Manager")
     background = win32gui.FindWindowEx(desk,0,"SHELLDLL_DefView",None)
-    program = win32gui.FindWindow(None,"123")
+    program = win32gui.FindWindow(None,programName)
     win32gui.SendMessage(desk, 0x052c, 0, 0)
     win32gui.EnumWindows(EnumWindowsProc,0)
     win32gui.SetParent(program,desk)
@@ -31,10 +28,20 @@ def embed():
 def on_shown():
     print('pywebview window shown')
     embed()
-    
+
+programName = "i-love-study"
+os.system('%s%s' % ("taskkill /F /IM ",programName))
+
+tmpHwnd = None
+
+cf = configparser.ConfigParser()
+cf.read("./config.ini")
+url = cf.get("pywebview", "url")
+
+
 window = webview.create_window(
-    title='123',
-    url = url,
+    title=programName,
+    url=url,
     width=1920,
     height=1080,
     resizable=True,
