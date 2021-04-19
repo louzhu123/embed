@@ -1,14 +1,21 @@
-# embed-将直播嵌入桌面
+## embed
+
+embed 支持嵌入，置底，置顶操作
+
+ ![img](https://img-blog.csdnimg.cn/2021041911070177.gif) 
 
 
-## Installation
 
-```
-$ git clone https://github.com/louzhu123/embed.git
-```
+### Todo
 
-## Others
+- 减小exe打包体积
+- 添加类似deskpin的置顶标记
 
-如果想要开机启动可以
 
-win+R，输入 `shell:startup`，然后把embed.pyw的快捷方式放到那个位置即可
+
+### 问题：
+
+- 置底操作 ,一些窗口会无法移动（酷狗音乐）,一些显示不完整（文件管理器）
+
+  
+
