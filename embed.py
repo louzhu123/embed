@@ -30,7 +30,9 @@ canOperate
 限制操作一些系统窗口，否则会影响体验
 '''
 def canOperate(windowHwnd):
-    if win32gui.GetClassName(windowHwnd) == "Shell_TrayWnd":
+    prohibitClassName = ['Shell_TrayWnd','SHELLDLL_DefView']
+    className = win32gui.GetClassName(windowHwnd)
+    if className in prohibitClassName:
         return False
     return True
 
